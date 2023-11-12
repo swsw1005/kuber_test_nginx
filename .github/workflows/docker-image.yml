@@ -57,7 +57,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}-${{ steps.datetime_gen.outputs.datetime }}
+          tags: ${{ steps.docker_meta.outputs.tags }}-${{ steps.datetime_gen.outputs.datetime_str }}
           labels: ${{ steps.docker_meta.outputs.labels }}
     
       # run: docker build . --file Dockerfile --tag swim_nginx_test:$(date +%s)
