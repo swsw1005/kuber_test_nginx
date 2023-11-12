@@ -22,7 +22,7 @@ jobs:
 
     - name: Set output
       id: datetime_gen
-      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_OUTPUT
+      run: echo "NOW=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
 
     - name: Build the Docker image
       uses: actions/checkout@v3
