@@ -14,10 +14,20 @@ jobs:
 
     steps:
 
-    - name: set NOW
-      run: |
-          echo "::set-env name=NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
+    # - name: set NOW
+    #   run: |
+    #       echo "::set-env name=NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
     
+    - name: Get the datetime string
+      # You may pin to the exact commit or the version.
+      # uses: ccccmagicboy/get_datetime@90837a2b6b95a8eeb840284775958b1528614eec
+      uses: ccccmagicboy/get_datetime@v0.1
+      with:
+        # time zone of the datetime
+        tz1: Asia
+        # time zone of the datetime
+        tz2: Seoul
+
     - name: Build the Docker image
       uses: actions/checkout@v3
 
