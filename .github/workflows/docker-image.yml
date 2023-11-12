@@ -23,17 +23,6 @@ jobs:
     - name: Set output
       id: datetime_gen
       run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_OUTPUT
-    
-    # - name: Get the datetime string
-    #   id: datetime_gen
-    #   # You may pin to the exact commit or the version.
-    #   # uses: ccccmagicboy/get_datetime@90837a2b6b95a8eeb840284775958b1528614eec
-    #   uses: ccccmagicboy/get_datetime@v0.1
-    #   with:
-    #     # time zone of the datetime
-    #     tz1: Asia
-    #     # time zone of the datetime
-    #     tz2: Seoul
 
     - name: Build the Docker image
       uses: actions/checkout@v3
@@ -63,7 +52,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}-${{ env.NOW }}
+          tags: ${{ steps.docker_meta.outputs.tags }}-${{ steps.datetime_gen.outputs.NOW }}
           labels: ${{ steps.docker_meta.outputs.labels }}
     
       # run: docker build . --file Dockerfile --tag swim_nginx_test:$(date +%s)
